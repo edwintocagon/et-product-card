@@ -7,6 +7,11 @@
     "dist",
     "src"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edwintocagon/et-product-card"
+  },
+  "homepage": "https://mauropastaz.netlify.app/",
   "engines": {
     "node": ">=10"
   },
@@ -60,5 +65,14 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
-  }
+  },
+  "keywords": [
+    "product",
+    "card",
+    "et-product-card",
+    "edwin",
+    "mauricio",
+    "tocagon",
+    "pastaz"
+  ]
 }
