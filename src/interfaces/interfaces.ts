@@ -1,7 +1,7 @@
-import { ProductCardProps } from "../components/ProductCard";
-import { ProductTitleProps } from "../components/ProductTitle";
-import { ProductImageProps } from "../components/ProductImage";
-import { ProductButtonsProps } from "../components/ProductButtons";
+import { ProductCardProps } from '../components/ProductCard';
+import { ProductTitleProps } from '../components/ProductTitle';
+import { ProductImageProps } from '../components/ProductImage';
+import { ProductButtonsProps } from '../components/ProductButtons';
 
 export interface Product {
   id: number;
@@ -14,7 +14,7 @@ export interface ProductCardContextProps {
   counter: number;
   product: Product;
   maxCount?: number;
-  increasBy: (value: number) => void;
+  increaseBy: (value: number) => void;
 }
 
 /* opcional */
@@ -34,7 +34,7 @@ export interface ProductinCart extends Product {
   count: number;
 }
 
-export interface initialValues {
+export interface InitialValues {
   count?: number;
   maxCount?: number;
 }
@@ -45,6 +45,6 @@ export interface ProductCardHandlers {
   maxCount?: number;
   product: Product;
 
-  increasBy: (value: number) => void;
+  increaseBy: (value: number) => void;
   reset: () => void;
 }

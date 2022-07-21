@@ -1,34 +1,35 @@
-import { useEffect, useState } from 'react';
-import { onChangeArgs, Product, initialValues } from '../interfaces/interfaces';
+import { useEffect, useRef, useState } from 'react';
+import { onChangeArgs, Product, InitialValues } from '../interfaces/interfaces';
 
 interface useProductArgs {
   product: Product;
   onChange?: (args: onChangeArgs) => void;
   value?: number;
-  initialValues?: initialValues;
+  InitialValues?: InitialValues;
 }
 
 export const useProduct = ({
   onChange,
   product,
   value = 0,
-  initialValues,
+  InitialValues,
 }: useProductArgs) => {
-  const [counter, setCounter] = useState<number>(initialValues?.count || value);
+  const [counter, setCounter] = useState<number>(InitialValues?.count || value);
+  const isMounted = useRef(false);
 
-  /* const isMounted = useRef(false); */
+  const increaseBy = (value: number) => {
+    let newValue = Math.max(counter + value, 0);
+    if (InitialValues?.maxCount) {
+      newValue = Math.min(newValue, InitialValues.maxCount);
+    }
 
-  const increasBy = (value: number) => {
-    console.log(counter);
-    if (initialValues?.maxCount && counter + value > initialValues.maxCount)
-      return;
-
-    const newValue = Math.max(0, counter + value);
     setCounter(newValue);
-    onChange && onChange({ product, count: newValue });
+    onChange && onChange({ count: newValue, product });
   };
 
-  /* console.log(isMounted.current);
+  const reset = () => {
+    setCounter(InitialValues?.count || value);
+  };
 
   useEffect(() => {
     if (!isMounted.current) return;
@@ -37,26 +38,15 @@ export const useProduct = ({
 
   useEffect(() => {
     isMounted.current = true;
-  }, []); */
-
-  const reset = () => {
-    setCounter(initialValues?.count || value);
-  };
-
-  useEffect(() => {
-    setCounter(initialValues?.count || value);
-    /*     return () => {
-      setCounter(0);
-    }; */
-  }, [value]);
+  }, []);
 
   return {
     counter,
     isMaxCountReached:
-      !!initialValues?.count && initialValues.maxCount === counter,
-    maxCount: initialValues?.maxCount,
+      !!InitialValues?.count && InitialValues.maxCount === counter,
+    maxCount: InitialValues?.maxCount,
 
-    increasBy,
+    increaseBy,
     reset,
   };
 };
