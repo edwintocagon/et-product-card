@@ -13,9 +13,9 @@ import {ProductCard, ProductImage, ProductTitle,ProductButtons} from 'et-product
 ````
  <ProductCard
           product={product}
-          initialValues={{ count: 3, maxCount: 10 }}
+          InitialValues={{ count: 3, maxCount: 10 }}
         >
-          {({ reset, count, increasBy, isMaxCountReached, maxCount }) => (
+          {({ reset, count, increaseBy, isMaxCountReached, maxCount }) => (
             <>
               <ProductImage />
               <ProductTitle />
