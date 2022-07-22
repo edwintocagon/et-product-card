@@ -10,7 +10,7 @@ Este es un paquete de pruebas de despliegue en NPM.
 import {ProductCard, ProductImage, ProductTitle,ProductButtons} from 'et-product-card';
 ```
 
-````
+```
  <ProductCard
           product={product}
           InitialValues={{ count: 3, maxCount: 10 }}
@@ -23,5 +23,4 @@ import {ProductCard, ProductImage, ProductTitle,ProductButtons} from 'et-product
             </>
           )}
 </ProductCard>
-        ```
-````
+```
